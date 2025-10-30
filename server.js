@@ -7,13 +7,12 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Cho phép đọc file tĩnh trong thư mục public
+// Phục vụ tất cả file tĩnh từ /public
 app.use(express.static(path.join(__dirname, "public")));
 
-// Route chính trả về index.html
+// Khi không trùng file tĩnh nào, trả về index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Xuất app cho Vercel dùng
 export default app;
